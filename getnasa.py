@@ -34,4 +34,3 @@ def getnasa(api_key):
         file.write(responsedw.content)
    
    return photo_links   
-pprint(getnasa("k8FHszIOyyxH16qEVedh63E4rxMpoOz9V2oF82Xx"))
