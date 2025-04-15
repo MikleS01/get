@@ -7,9 +7,17 @@ from config import *
 import requests
 import random 
 from tg_bots import *  
+from pathlib import Path
 
 
-pyti = []
+
+if not os.path.exists(Path('./spxpictr')):
+    os.makedirs('./spxpictr')
+
+if not os.path.exists(Path('./nasa_pictures')):
+    os.makedirs('./nasa_pictures')
+
+Ways = []
 random_sp = ['nasa','spacex']
 
 
@@ -27,15 +35,15 @@ if nos == 'nasa':
     getnasa(nasa_token)
     photo_files = os.listdir("nasa_pictures") 
     for i in photo_files:
-        pyti.append(f'nasa_pictures/{i}')
+        Ways.append(f'nasa_pictures/{i}')
     text = 'Картинка дня от Nasa☑'
 else:
     getspx = getspacex()
     photo_files =os.listdir("spxpictr")
     for i in photo_files:
-        pyti.append(f'spxpictr/{i}')
+        Ways.append(f'spxpictr/{i}')
     text = f" Запуск ракеты SpaceX☑. совершен: {getspx} "
 
-send_media_file(tg_chat_id,tg_token,pyti,text)
+send_media_file(tg_chat_id,tg_token,Ways,text)
 # print(photo_files)
 
